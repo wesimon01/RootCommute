@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "Root": {
+      "commandName": "Project",
+      "commandLineArgs": "input.txt",
+      "environmentVariables": {
+        "Key": "Value",
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}
