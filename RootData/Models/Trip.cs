@@ -48,7 +48,7 @@ namespace RootData.Models
             foreach(var t in trips)
             {
                 var speed = CalculateSpeedMph(t);
-                if (speed > 5M && speed < 100M)
+                if (speed >= 5M && speed <= 100M)
                     result.Add(t);
             }
             return result;
