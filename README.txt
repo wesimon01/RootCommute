@@ -49,11 +49,11 @@ Overview of the Root console application:
    isValid property is set to false and the bad command is added to a list that 
    will be printed to the console with a warning message.   
    
-   IMO, using objects is the most intuitive way to implement a solution to the problem statement.   
+   IMO, using objects is the most intuitive way to implement a solution to the problem statement.  
    The Trip and Driver classes both inheirit from an abstract base class called "RootCommand".
-   Children of RootCommand will all have an IsValid property and must implement an IsValidData() method.  
-   I considered using an IRootCommand interface here instead but I wanted to have a couple of general
-   command methods with an actual implementation.
+   Children of RootCommand will all have an IsValid property and are required to implement validation
+   using the IsValidData() method. Considered using an IRootCommand interface here instead but wanted 
+   the ability to control access modifiers.  
 
 4) Commands are grouped by type.
 5) The list of Driver command objects is checked for duplicate names.

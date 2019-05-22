@@ -17,8 +17,8 @@ namespace Tests
             var cmdStr1 = "Driver Evan"; 
             var cmdStr2 = "Trip James 12:00 14:00 55.8";          
             //Act            
-            Driver parsedCmd1 = (Driver)RootCommand.ParseCommand(cmdStr1, delimiter);
-            Trip parsedCmd2 = (Trip)RootCommand.ParseCommand(cmdStr2, delimiter);
+            Driver parsedCmd1 = (Driver)RootCommandUtil.ParseCommand(cmdStr1, delimiter);
+            Trip parsedCmd2 = (Trip)RootCommandUtil.ParseCommand(cmdStr2, delimiter);
             
             //Assert
             Assert.AreEqual("Evan", parsedCmd1.Name);
@@ -113,7 +113,7 @@ namespace Tests
             commands.Add(new Trip(input[4]));
             
             //Act
-            RootCommand.GroupCommandsByType(commands, drivers, trips);
+            RootCommandUtil.GroupCommandsByType(commands, drivers, trips);
 
             //Assert
             Assert.IsTrue(drivers.Count == 2);

@@ -34,31 +34,31 @@ namespace Root
                 IConfigurationRoot config = builder.Build();               
                 #endregion Initialize Config
                 
-                Util.ValidateArgs(args, Path.Combine(workingDir, config["inputFolder"]));  
+                ProgramUtil.ValidateArgs(args, Path.Combine(workingDir, config["inputFolder"]));  
                 string inputFilePath = Path.Combine(workingDir, config["inputFolder"], args[0]);
                 
                 Console.WriteLine($"Found input file: {inputFilePath}\n");                               
                 Console.WriteLine("Generating Driver Report\n");                
-                List<string> rawInput = Util.GetRawInput(inputFilePath);
+                List<string> rawInput = ProgramUtil.GetRawInput(inputFilePath);
                                 
                 foreach (var s in rawInput) {     
-                    var cmd = RootCommand.ParseCommand(s, config["delimiter"]);    
+                    var cmd = RootCommandUtil.ParseCommand(s, config["delimiter"]);    
                     if (cmd.IsValid) 
                         cmds.Add(cmd);
                     else 
                         invalidCmds.Add(s); 
                 }
-                RootCommand.GroupCommandsByType(cmds, drivers, trips);
+                RootCommandUtil.GroupCommandsByType(cmds, drivers, trips);
 
                 Driver.CheckForDuplicateDrivers(drivers);                
                 trips = Trip.FilterTripsBySpeed(trips);                
                 Driver.AssignTripsToDrivers(drivers, trips);
-              
+                
                 reportData = ReportData.PopulateReportData(drivers);
                 ReportData.SortReportDataByMileage(reportData);
 
                 string outputPath = Path.Combine(workingDir, config["outputFolder"]);
-                ReportData.WriteReport(reportData, outputPath, config["outputFile"]);
+                ReportData.WriteReport(reportData, outputPath, config["outputFile"]);                              
             }           
             catch (Exception ex)
             {
@@ -66,12 +66,12 @@ namespace Root
                 throw;
             }
             if (invalidCmds.Count > 0) {
-                Util.ConsoleColorWriteLine($"!WARNING - INVALID COMMANDS!", ConsoleColor.Yellow);               
+                ProgramUtil.ConsoleColorWriteLine($"!WARNING - INVALID COMMANDS!", ConsoleColor.Yellow);               
                 foreach(var cmd in invalidCmds) { 
-                    Util.ConsoleColorWriteLine($"Invalid Command found: {cmd}", ConsoleColor.Yellow);
+                    ProgramUtil.ConsoleColorWriteLine($"Invalid Command found: {cmd}", ConsoleColor.Yellow);
                 }
             }
-            Util.ConsoleColorWriteLine("COMPLETE!\n", ConsoleColor.Green);           
+            ProgramUtil.ConsoleColorWriteLine("COMPLETE!\n", ConsoleColor.Green);           
             Console.WriteLine("Press any key to exit");
             Console.ReadLine();
 

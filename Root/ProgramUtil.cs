@@ -4,7 +4,7 @@ using System.IO;
 
 namespace Root
 {
-    public static class Util
+    public static class ProgramUtil
     {
         public static void ValidateArgs(string[] args, string inputPath)
         {                
