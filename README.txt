@@ -1,6 +1,6 @@
 Environment and Building the App (Win 10 machine):
 
-After cloning RootApp.bundle to a local directory, open the RootApp.sln file on a Windows 10
+After cloning RootApp.gitbundle to a local directory, open the RootApp.sln file on a Windows 10
 machine with Visual Studio 2017 or later installed (Enterprise, Professional, or Community Edition).  
 If the machine does not have Visual Studio installed, it 
 can be found at https://visualstudio.microsoft.com/vs/community/ 
@@ -19,13 +19,13 @@ The following options should be set as follows in the Publish Summary Section:
 Configuration: Release|Any CPU
 Target Framework: netcoreapp2.2
 Deployment Mode: Framework Dependent
-Target Runtime: win-x64
+Target Runtime: Portable
 Target Location : This can be whatever you want
 
 Click the "Publish" button after configuring options.
 
 Navigate to the target location where the app was published.  Open a command line in the target directory 
-and type "Root.exe input.txt" into the command line. The app should run, producing a Report folder in the 
+and type "dotnet Root.dll input.txt" into the command line. The app should run, producing a Report folder in the 
 the target directory containing the report (report.txt). 
 
 The tests inside the RootTest project can be verified by right-clicking on the project icon in solution
