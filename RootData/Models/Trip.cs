@@ -37,7 +37,7 @@ namespace RootData.Models
             if (!decimal.TryParse(data[4], out decimal distance))
                 return false;
             
-            if (startTime.TimeOfDay > endTime.TimeOfDay)
+            if (startTime.TimeOfDay >= endTime.TimeOfDay)
                 return false;
 
             return true;
