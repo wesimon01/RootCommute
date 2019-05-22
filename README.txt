@@ -1,6 +1,6 @@
-Environment and Building the App:
+Environment and Building the App (Win 10 machine):
 
-After unzipping the git bundle please, open the RootApp.sln file on a Windows 10
+After cloning RootApp.bundle to a local directory, open the RootApp.sln file on a Windows 10
 machine with Visual Studio 2017 or later installed (Enterprise, Professional, or Community Edition).  
 If the machine does not have Visual Studio installed, it 
 can be found at https://visualstudio.microsoft.com/vs/community/ 
@@ -12,8 +12,9 @@ so this application will probably work on mac, although it has not been tested o
 
 To build the app, Right-click on the Root project icon in Visual Studio solution explorer 
 (solution explorer can be accessed by clicking on view -> solution explorer) and select "Publish".
+When asked to create a publish target select "folder" and click create profile.
 
-The following options should be set as follows:
+The following options should be set as follows in the Publish Summary Section:
 
 Configuration: Release|Any CPU
 Target Framework: netcoreapp2.2
@@ -24,7 +25,7 @@ Target Location : This can be whatever you want
 Click the "Publish" button after configuring options.
 
 Navigate to the target location where the app was published.  Open a command line in the target directory 
-and type "Root.exe input.txt" into the command line. The app should produce a Report folder in the 
+and type "Root.exe input.txt" into the command line. The app should run, producing a Report folder in the 
 the target directory containing the report (report.txt). 
 
 The tests inside the RootTest project can be verified by right-clicking on the project icon in solution
@@ -48,7 +49,7 @@ Overview of the Root console application:
    isValid property is set to false and the bad command is added to a list that 
    will be printed to the console with a warning message.   
    
-   IMO, using objects is the most logical way to implement a solution to the problem statement.   
+   IMO, using objects is the most intuitive way to implement a solution to the problem statement.   
    The Trip and Driver classes both inheirit from an abstract base class called "RootCommand".
    Children of RootCommand will all have an IsValid property and must implement an IsValidData() method.  
    I considered using an IRootCommand interface here instead but I wanted to have a couple of general
@@ -63,7 +64,7 @@ Overview of the Root console application:
 
 *** The app will fail if unknown commands are found or if duplicate drivers are detected.  
 If one/both of these scenarios occurs, there is a significant problem with the 
-input data and the program should halt, IMO.  Duplicate drivers could actaully be two different people 
+input data and the program should halt, IMO.  Duplicate drivers could actually be two different people 
 and not just invalid data, so trip assignment would be ambiguous.  
 
 
