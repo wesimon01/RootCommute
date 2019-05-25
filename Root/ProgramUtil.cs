@@ -26,8 +26,8 @@ namespace Root
                     if (lineIn.Trim() != "")
                         rawInput.Add(lineIn);
                 }                
-                return rawInput;
             }
+            return rawInput;
         }       
         public static void ConsoleColorWriteLine(string message, ConsoleColor color)
         {

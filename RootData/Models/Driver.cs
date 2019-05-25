@@ -37,13 +37,18 @@ namespace RootData.Models
                 throw new InvalidDataException($"Duplicate driver names found in input data: {dups.ToString()}");
         }
         public static void AssignTripsToDrivers(List<Driver> drivers, List<Trip> trips)
-        {            
+        {      
             foreach (var d in drivers) {
-                foreach (var t in trips) {
-                    if (d.Name == t.DriverName)                    
-                        d.Trips.Add(t);                                          
-                }
+                var driverTrips = trips.Where(t => t.DriverName == d.Name);
+                d.Trips.AddRange(driverTrips);
             }
+
+            //foreach (var d in drivers) {
+            //    foreach (var t in trips) {
+            //        if (d.Name == t.DriverName)                    
+            //            d.Trips.Add(t);                                          
+            //    }
+            //}
         }
     }
 }
